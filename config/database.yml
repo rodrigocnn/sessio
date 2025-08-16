@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: admin
+  password: zxc123
+  host: localhost
+
+development:
+  <<: *default
+  database: sessio_development
+
+test:
+  <<: *default
+  database: sessio_test
+
+production:
+  <<: *default
+  database: sessio_production
+  username: sessio
+  password: <%= ENV["SESSIO_DATABASE_PASSWORD"] %>
