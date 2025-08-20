@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_20_223505) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_20_225533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,5 +41,26 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_20_223505) do
     t.index ["email"], name: "index_psicologos_on_email", unique: true
   end
 
+  create_table "sessaos", force: :cascade do |t|
+    t.bigint "psicologo_id", null: false
+    t.bigint "paciente_id", null: false
+    t.date "data_sessao"
+    t.text "resumo"
+    t.text "observacoes_comportamentais"
+    t.text "intervencoes_realizadas"
+    t.text "reacoes_paciente"
+    t.text "encaminhamentos"
+    t.text "planos_terapeuticos"
+    t.text "hipoteses_diagnosticas"
+    t.string "tecnica_utilizada"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["paciente_id"], name: "index_sessaos_on_paciente_id"
+    t.index ["psicologo_id"], name: "index_sessaos_on_psicologo_id"
+  end
+
   add_foreign_key "pacientes", "psicologos"
+  add_foreign_key "sessaos", "pacientes"
+  add_foreign_key "sessaos", "psicologos"
 end
