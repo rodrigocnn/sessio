@@ -46,6 +46,9 @@ class PsicologosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def psicologo_params
-      params.require(:psicologo).permit(:nome, :email, :password_digest, :telefone, :crp, :cpf, :endereco, :data_nascimento, :especialidade)
+      params.require(:psicologo).permit(
+      :nome, :email, :password, :password_confirmation,
+      :telefone, :crp, :cpf, :endereco, :data_nascimento, :especialidade
+    )
     end
 end
