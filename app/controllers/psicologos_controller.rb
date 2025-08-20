@@ -39,12 +39,11 @@ class PsicologosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_psicologo
       @psicologo = Psicologo.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def psicologo_params
       params.require(:psicologo).permit(
       :nome, :email, :password, :password_confirmation,
