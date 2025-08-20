@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_16_175842) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_20_223505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pacientes", force: :cascade do |t|
+    t.bigint "psicologo_id", null: false
+    t.string "nome"
+    t.string "email"
+    t.string "telefone"
+    t.date "data_nascimento"
+    t.text "observacoes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["psicologo_id"], name: "index_pacientes_on_psicologo_id"
+  end
 
   create_table "psicologos", force: :cascade do |t|
     t.string "nome"
@@ -28,4 +40,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_16_175842) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_psicologos_on_email", unique: true
   end
+
+  add_foreign_key "pacientes", "psicologos"
 end
