@@ -1,9 +1,12 @@
-# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+# Ignorar arquivos de views (ERB) ou HTML
+app/views/** linguist-vendored
+*.erb linguist-vendored
+*.html linguist-vendored
 
-# Mark the database schema as having been generated.
-db/schema.rb linguist-generated
+# Ignorar documentação ou assets que possam interferir
+public/** linguist-vendored
+docs/** linguist-vendored
 
-# Mark any vendored files as having been vendored.
-vendor/* linguist-vendored
-config/credentials/*.yml.enc diff=rails_credentials
-config/credentials.yml.enc diff=rails_credentials
+# Mantém Ruby como principal
+*.rb linguist-language=Ruby
+
